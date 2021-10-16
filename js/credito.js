@@ -8,15 +8,21 @@ export class Credito {
 
   // Cálculo de la Tasa Efectiva Mensual - TEM
   calculoTasaEfectivaMensual = () => {
-    let tasaEfectivaMensual = ((Math.pow((1 + this.tea / 100), (30 / 360))) - 1) * 100;
+    let tasaEfectivaMensual = (
+      (Math.pow((1 + this.tea / 100), (30 / 360))) - 1
+    ) * 100;
     return tasaEfectivaMensual.toFixed(2);
   }
 
   // Cálculo de la Cuota Fija Mensual - Para el cálculo de la Cuota Fija Mensual se utiliza la TEM
   calculoCuotaFijaMensual = () => {
-    let tasaEfectivaMensual = Number(this.calculoTasaEfectivaMensual()); // => porcentaje
-    tasaEfectivaMensual = tasaEfectivaMensual / 100;
-    let cuotaFijaMensual = this.prestamo * ((tasaEfectivaMensual * (Math.pow(1 + tasaEfectivaMensual, 12))) / ((Math.pow(1 + tasaEfectivaMensual, 12)) - 1))
+    let tasaEfectivaMensual = Number(this.calculoTasaEfectivaMensual()) / 100; // => porcentaje
+    let cuotaFijaMensual = this.prestamo * (
+      (tasaEfectivaMensual * (Math.pow(1 + tasaEfectivaMensual, this.plazo))) 
+      / 
+      ((Math.pow(1 + tasaEfectivaMensual, this.plazo)) - 1)
+    );
+    
     return cuotaFijaMensual.toFixed(2);
   }
 
@@ -24,7 +30,7 @@ export class Credito {
   calculoInteresCuota = (saldoCapital) => {
     let tasaEfectivaMensual = Number(this.calculoTasaEfectivaMensual()) / 100;
     let interes = saldoCapital * tasaEfectivaMensual;
-    return interes.toFixed(2);
+    return interes;
   }
 
   // Cálculo de la Amortización Mensual
