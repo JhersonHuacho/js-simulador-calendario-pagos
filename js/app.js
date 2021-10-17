@@ -8,6 +8,31 @@ const getSpace = (headerTableKey, creditoKey) => {
     : headerTableKey.length - creditoKey.toString().length);
 }
 
+const generarCalendario = (headerTable, calendario) => {
+    const headTable = `| ${headerTable.nroCuota} | ${headerTable.capital} | ${headerTable.interes} | ${headerTable.cuota} | ${headerTable.saldo} |`;
+
+    let calendarioTemplate = calendario.map(rowCuota => {
+    let { nroCuota, capital, interes, cuota, saldo } = rowCuota;
+    let espacioNroCuota = nroCuota.toString().length === 1 ? new Array(headerTable.nroCuota.length - 1).join("  ") : new Array(headerTable.nroCuota.length - 2).join("  ");
+    let espacioCapital = getSpace(headerTable.capital, capital);
+    let espacioInteres = getSpace(headerTable.interes, interes);
+    let espacioCuota = getSpace(headerTable.cuota, cuota);
+    let espacioSaldo = getSpace(headerTable.saldo, saldo);
+    const row = `| ${nroCuota}${espacioNroCuota} | ${capital}${espacioCapital} | ${interes}${espacioInteres} | ${cuota}${espacioCuota} | ${saldo}${espacioSaldo}`;
+    return row;
+  });
+
+  let bodyTable = "";
+
+  calendarioTemplate.forEach(row => {
+    bodyTable += `${row} \n`;
+  });
+
+  const tableContent = `${headTable} \n${bodyTable}`;
+
+  return tableContent;
+}
+
 do {
 
   const PRESTAMO = prompt(">>> Ingrese el monto del préstamo"); // => numeric
@@ -25,8 +50,6 @@ do {
     cuota: "CUOTA",
     saldo: "SALDO"
   }
-
-  const headTable = `| ${headerTable.nroCuota} | ${headerTable.capital} | ${headerTable.interes} | ${headerTable.cuota} | ${headerTable.saldo} |`;
 
   let rowCalendario = {
     nroCuota: 0,
@@ -59,25 +82,22 @@ do {
 
   console.log(headerTable.nroCuota.length);
 
-  let calendarioTemplate = calendario.map(rowCuota => {
-    let { nroCuota, capital, interes, cuota, saldo } = rowCuota;
-    let espacioNroCuota = nroCuota.toString().length === 1 ? new Array(headerTable.nroCuota.length - 1).join("  ") : new Array(headerTable.nroCuota.length - 2).join("  ");
-    let espacioCapital = getSpace(headerTable.capital, capital);
-    let espacioInteres = getSpace(headerTable.interes, interes);
-    let espacioCuota = getSpace(headerTable.cuota, cuota);
-    let espacioSaldo = getSpace(headerTable.saldo, saldo);
-    const row = `| ${nroCuota}${espacioNroCuota} | ${capital}${espacioCapital} | ${interes}${espacioInteres} | ${cuota}${espacioCuota} | ${saldo}${espacioSaldo}`;
-    return row;
+  let tableContent = generarCalendario(headerTable, calendario);
+  alert(`>> La Tasa Efectiva Mensual (TEA) es: ${credito.calculoTasaEfectivaMensual()} %\n>> Cronograma de Pagos:  \n\n${tableContent}`);
+
+  const tipoOrdenar = prompt("¿Selecciona uno de los tipos de ordenamiento de las cuotas?\n 1=> Ordenar ascendentemente \n 2=> Ordenar descendenmente");
+
+  const calendarioOrdenado = calendario.sort((a, b) => {
+    if (a.nroCuota > b.nroCuota) {
+      return Number(tipoOrdenar) === 1 ? 1 : -1;
+    }
+    if (a.nroCuota < b.nroCuota) {
+      return Number(tipoOrdenar) === 1 ? -1 : 1;
+    }
+    return 0
   });
 
-  let bodyTable = "";
-
-  calendarioTemplate.forEach(row => {
-    bodyTable += `${row} \n`;
-  });
-
-  const tableContent = `${headTable} \n${bodyTable}`;
-
+  tableContent = generarCalendario(headerTable, calendarioOrdenado);
   alert(`>> La Tasa Efectiva Mensual (TEA) es: ${credito.calculoTasaEfectivaMensual()} %\n>> Cronograma de Pagos:  \n\n${tableContent}`);
 
   deseaContinuar = prompt("¿Desea continuar para ver otro cronograma?\n 0 => Para salir \n 1 => Para continuar.");
