@@ -1,7 +1,7 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -9,6 +9,67 @@ body {
 }
 
 header {
-  height: 50px;
+  height: 70px;
   background-color: coral;
+}
+
+header span {
+  display: inline-block;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+table {
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+table thead tr {
+  background-color: #009879;
+}
+
+table thead th:nth-child(1) {
+  width: 50px;
+}
+table thead th:nth-child(2) {
+  width: 150px;
+}
+table thead th:nth-child(3) {
+  width: 150px;
+}
+table thead th:nth-child(4) {
+  width: 150px;
+}
+table thead th:nth-child(5) {
+  width: 150px;
+}
+
+.formulario {
+  margin: 2rem 20%;
+}
+
+.formulario .campo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+.formulario .campo label {
+  font-size: 18px;
+}
+.formulario .campo input {
+  padding: 7px;
+}
+.formulario .button-content {
+  text-align: center;
+}
+.formulario .button-content input {
+  margin-top: 20px;
+  padding: 10px;
+  width: 120px;
+  font-size: 18px;
+}
+
+.cronograma {
+  margin-bottom: 50px;
 }
