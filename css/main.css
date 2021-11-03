@@ -73,3 +73,17 @@ table thead th:nth-child(5) {
 .cronograma {
   margin-bottom: 50px;
 }
+
+.mensaje {
+  font-size: 12px;
+  color: red;
+  font-weight: bold;
+}
+
+.block {
+  display: block;
+}
+
+.none {
+  display: none;
+}

@@ -23,27 +23,48 @@
       </p>
     </div>
     <div class="form-content">
-      <form class="formulario" action="">
+      <form class="formulario" action="" autocomplete="off">
         <div class="campo">
           <label for="prestamo">Prestamo:</label>
           <input type="text" id="prestamo">
+          <span class="mensaje none">* Debe ingresar el prestamo</span>
         </div>
         <div class="campo">
           <label for="plazo">Plazo:</label>
           <input type="text" id="plazo">
+          <span class="mensaje none">* Debe ingresar el plazo</span>
         </div>
         <div class="campo">
           <label for="tea">TEA:</label>
           <input type="text" id="tea">
+          <span class="mensaje none">* Debe ingresar la TEA</span>
         </div>
         <div class="button-content">
           <input type="submit" value="Calcular">
         </div>
       </form>
     </div>
+    <div class="historial">
+      <h3>Historial de cronogramas</h3>
+      <table class="table-historial">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Prestamo</th>
+            <th>Plazo</th>
+            <th>TEA</th>
+            <th>Ver</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <br>
     <div class="cronograma">
       <h3>Cronograma de pagos</h3>
-      <table>
+      <table class="table-cronograma">
         <thead>
           <tr>
             <th>Nº de cuotas</th>
