@@ -1,23 +1,83 @@
-* {
+*,
+*::before,
+*::after{
+  box-sizing: inherit;
   margin: 0;
   padding: 0;
+}
+
+html {
   box-sizing: border-box;
+  font-size: 62.5%;
 }
 
 body {
-  margin: 0 20%;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
+  background-color: #E9F4FF;
 }
 
-header {
+.header {
   height: 70px;
-  background-color: coral;
 }
 
-header span {
-  display: inline-block;
-  padding: 10px;
-  margin: 0 auto;
+.header-title {
+  margin-left: 3rem;
+  margin-right: 3rem;
+  margin-top: 2rem;
 }
+.header-title span {
+  font-size: 2.7rem;
+  font-weight: bold;
+  font-style: normal;
+  letter-spacing: 0.67px;
+  color: #2375f0;
+}
+
+.wrapper {
+  /* width: 100%; */
+  display: grid;
+  grid-template-columns: 243px 1fr;
+  grid-template-rows: 64px 1fr;
+}
+
+/* .main {
+  background-color: #E9F4FF;
+} */
+
+.nav {
+  background-color: #fff;
+  border-radius: 0 30px 30px 0;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.nav .logo {
+  margin: 1rem 2rem 0 2rem;
+  font-size: 2.2rem;
+}
+
+.menu-item {
+  list-style-type: none;
+  padding: 1rem 0;
+}
+
+.menu-link {
+  text-decoration: none;
+  color: #214a74;
+}
+
+.menu-main {
+  margin: 1.6rem 2rem;
+}
+
+.main-content {
+  margin: 0 3rem;
+}
+
+/* .btn {
+  height: 43px;
+} */
 
 table {
   border-collapse: collapse;
@@ -25,8 +85,29 @@ table {
   width: 100%;
 }
 
+table td {
+  color: #004976;
+}
+
 table thead tr {
-  background-color: #009879;
+  /* background-color: #009879; */
+  background-color: #2375f0;
+  color: #ffffff;
+  text-align: left;
+}
+
+table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+table tbody tr:nth-of-type(even) {
+  /* background-color: #f3f3f3; */
+  background-color: #bee9ff;;
+}
+
+table tbody tr:last-of-type {
+  /* border-bottom: 2px solid #009879; */
+  border-bottom: 2px solid #2375f0;
 }
 
 table thead th:nth-child(1) {
@@ -45,8 +126,16 @@ table thead th:nth-child(5) {
   width: 150px;
 }
 
+table th,
+table td {
+  padding: 12px 15px;
+}
+
 .formulario {
   margin: 2rem 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .formulario .campo {
@@ -59,6 +148,7 @@ table thead th:nth-child(5) {
 }
 .formulario .campo input {
   padding: 7px;
+  width: 400px;
 }
 .formulario .button-content {
   text-align: center;
@@ -68,6 +158,13 @@ table thead th:nth-child(5) {
   padding: 10px;
   width: 120px;
   font-size: 18px;
+  background: linear-gradient(to right, #2375f0 0%, #38D4F2 100%);
+  border-radius: 25px;
+  border: 1px solid #38D4F2;
+  width: 211px;
+  color: #fff;
+  font-weight: 100;
+  letter-spacing: 1.26px;
 }
 
 .cronograma {

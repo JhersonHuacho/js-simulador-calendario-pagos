@@ -6,82 +6,114 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simulador de Calendario de Crédito</title>
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
   <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
-  <header>
-    <span>Bienvenido</span>
-  </header>
-  <section>
-    <div class="descripcion">
-      <h2>Calendario de Pagos- </h2>
-      <p>
-        Una persona acude a una entidad Bancaria en busca de un préstamo de consumo, por un monto
-        de S/ 6,000.00 a un plazo de 12 meses. De acuerdo al tarifario le corresponde una tasa
-        efectiva de interés anual de 52.87 %.
-      </p>
-    </div>
-    <div class="form-content">
-      <form class="formulario" action="" autocomplete="off">
-        <div class="campo">
-          <label for="prestamo">Prestamo:</label>
-          <input type="text" id="prestamo">
-          <span class="mensaje none">* Debe ingresar el prestamo</span>
-        </div>
-        <div class="campo">
-          <label for="plazo">Plazo:</label>
-          <input type="text" id="plazo">
-          <span class="mensaje none">* Debe ingresar el plazo</span>
-        </div>
-        <div class="campo">
-          <label for="tea">TEA:</label>
-          <input type="text" id="tea">
-          <span class="mensaje none">* Debe ingresar la TEA</span>
-        </div>
-        <div class="button-content">
-          <input type="submit" value="Calcular">
-        </div>
-      </form>
-    </div>
-    <div class="historial">
-      <h3>Historial de cronogramas</h3>
-      <table class="table-historial">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Prestamo</th>
-            <th>Plazo</th>
-            <th>TEA</th>
-            <th>Ver</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-    </div>
-    <br>
-    <br>
-    <div class="cronograma">
-      <h3>Cronograma de pagos</h3>
-      <table class="table-cronograma">
-        <thead>
-          <tr>
-            <th>Nº de cuotas</th>
-            <th>Capital</th>
-            <th>Interes</th>
-            <th>Cuota</th>
-            <th>Saldo</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-    </div>
-  </section>
-  <footer>
+  <div class="wrapper">
+    <header class="header">
+      <div class="header-title">
+        <span>Bienvenido</span>
+      </div>
+    </header>
 
-  </footer>
+    <nav class="nav">
+      <div class="logo">
+        <h1>Simulador</h1>
+      </div>
+      <div class="menu-main">
+        <ul class="menu">
+          <li class="menu-item">
+            <a href="#" class="menu-link">Generar Cronograma</a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">Mis cronogramas</a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">Ejemplos</a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">Conceptos de créditos</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="main">
+      <section class="main-content">
+        <div class="descripcion">
+          <h2>Calendario de Pagos- </h2>
+          <p>
+            Una persona acude a una entidad Bancaria en busca de un préstamo de consumo, por un monto
+            de S/ 6,000.00 a un plazo de 12 meses. De acuerdo al tarifario le corresponde una tasa
+            efectiva de interés anual de 52.87 %.
+          </p>
+        </div>
+        <div class="form-content">
+          <form class="formulario" action="" autocomplete="off">
+            <div class="campo">
+              <label for="prestamo">Prestamo:</label>
+              <input type="text" id="prestamo">
+              <span class="mensaje none">* Debe ingresar el prestamo</span>
+            </div>
+            <div class="campo">
+              <label for="plazo">Plazo:</label>
+              <input type="text" id="plazo">
+              <span class="mensaje none">* Debe ingresar el plazo</span>
+            </div>
+            <div class="campo">
+              <label for="tea">TEA:</label>
+              <input type="text" id="tea">
+              <span class="mensaje none">* Debe ingresar la TEA</span>
+            </div>
+            <div class="button-content">
+              <input class="btn" type="submit" value="Calcular">
+            </div>
+          </form>
+        </div>
+        <div class="historial">
+          <h3>Historial de cronogramas</h3>
+          <table class="table-historial">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Prestamo</th>
+                <th>Plazo</th>
+                <th>TEA</th>
+                <th>Ver</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+        <br>
+        <br>
+        <div class="cronograma">
+          <h3>Cronograma de pagos</h3>
+          <table class="table-cronograma">
+            <thead>
+              <tr>
+                <th>Nº de cuotas</th>
+                <th>Capital</th>
+                <th>Interes</th>
+                <th>Cuota</th>
+                <th>Saldo</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
   <!-- <script src="./js/app.js"></script> -->
   <!-- <script type="module" src="./js/app.js"></script> -->
   <!-- <script src="./js/credito.js"></script> -->
