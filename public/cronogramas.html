@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Calendario de Crédito</title>
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <div class="header-title">
+        <span>Bienvenido</span>
+      </div>
+    </header>
+
+    <nav class="nav">
+      <div class="logo">
+        <h1>Simulador</h1>
+      </div>
+      <div class="menu-main">
+        <ul class="menu">
+          <li class="menu-item">
+            <a href="../index.html" class="menu-link">Generar Cronograma</a>
+          </li>
+          <li class="menu-item">
+            <a href="./cronogramas.html" class="menu-link">Mis cronogramas</a>
+          </li>
+          <!-- <li class="menu-item">
+            <a href="#" class="menu-link">Ejemplos</a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">Conceptos de créditos</a>
+          </li> -->
+        </ul>
+      </div>
+    </nav>
+
+    <main class="main">
+      <section class="main-content">
+        <div class="historial">
+          <h3>Historial de cronogramas</h3>
+          <table class="table-historial">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Prestamo</th>
+                <th>Plazo</th>
+                <th>TEA</th>
+                <th>Ver</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- <script src="./js/app.js"></script> -->
+  <!-- <script type="module" src="./js/app.js"></script> -->
+  <!-- <script src="./js/credito.js"></script> -->
+  <script type="module" src="../js/dom-cronograma.js"></script>
+</body>
+
+</html>

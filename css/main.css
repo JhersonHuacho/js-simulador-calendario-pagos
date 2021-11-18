@@ -75,6 +75,10 @@ body {
   margin: 0 3rem;
 }
 
+.svg {
+  width: 20px;
+}
+
 /* .btn {
   height: 43px;
 } */
@@ -125,18 +129,85 @@ table thead th:nth-child(4) {
 table thead th:nth-child(5) {
   width: 150px;
 }
+table thead th:nth-child(6) {
+  width: 150px;
+}
 
 table th,
 table td {
   padding: 12px 15px;
 }
 
+
+/*  tabla historial de cronogramas */
+.historial table {
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.historial table td {
+  color: #004976;
+}
+
+.historial table thead tr {
+  /* background-color: #009879; */
+  background-color: #2375f0;
+  color: #ffffff;
+  text-align: left;
+}
+
+.historial table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.historial table tbody tr:nth-of-type(even) {
+  /* background-color: #f3f3f3; */
+  background-color: #bee9ff;;
+}
+
+.historial table tbody tr:last-of-type {
+  /* border-bottom: 2px solid #009879; */
+  border-bottom: 2px solid #2375f0;
+}
+
+.historial table thead th:nth-child(1) {
+  width: 50px;
+}
+.historial table thead th:nth-child(2) {
+  width: 150px;
+}
+.historial table thead th:nth-child(3) {
+  width: 150px;
+}
+.historial table thead th:nth-child(4) {
+  width: 150px;
+}
+.historial table thead th:nth-child(5) {
+  width: 50px;
+}
+.historial table thead th:nth-child(6) {
+  width: 50px;
+}
+
+.historial table th,
+.historial table td {
+  padding: 12px 15px;
+}
+/* fin tabla historial */
+
 .formulario {
-  margin: 2rem 20%;
+  margin: 2rem 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+/* .formulario .content-campos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+} */
 
 .formulario .campo {
   display: flex;
@@ -146,10 +217,12 @@ table td {
 .formulario .campo label {
   font-size: 18px;
 }
-.formulario .campo input {
+.formulario .campo input,
+.formulario .campo select {
   padding: 7px;
   width: 400px;
 }
+
 .formulario .button-content {
   text-align: center;
 }

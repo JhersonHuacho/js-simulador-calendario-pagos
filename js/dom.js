@@ -4,31 +4,6 @@ let listCalendarios = [];
 
 const form = document.querySelector('form');
 
-// Cuando el html esta cargado
-const cargarHistorialCronogramas = (paramStorageListCalendario) => {
-  if (paramStorageListCalendario !== null) {
-    const tbody = document.querySelector('.table-historial tbody');
-    tbody.innerHTML = '';
-
-    for (let index = 0; index < paramStorageListCalendario.length; index += 1) {
-      const tr = document.createElement('tr');
-
-      Object.entries(paramStorageListCalendario[index]).forEach(([key, value]) => {
-        const td = document.createElement('td');
-        td.innerText = value;
-        // console.log(key);
-        if (key === 'calendario') {
-          td.innerText = 'ver';
-          tr.appendChild(td);
-        } else {
-          tr.appendChild(td);
-        }
-      });
-      tbody.appendChild(tr);
-    }
-  }
-};
-
 // Proceso de generar calendario
 const generarCalendarioHtml = (calendario) => {
   const tbody = document.querySelector('.table-cronograma tbody');
@@ -46,13 +21,24 @@ const generarCalendarioHtml = (calendario) => {
   }
 };
 
-const generarCronograma = (paramPrestamo, paramPlazo, paramTea) => {
+const generarCronograma = (paramCredito) => {
+  const {
+    prestamo: paramPrestamo,
+    plazo: paramPlazo,
+    tea: paramTea,
+    fechaDesembolso: paramFechaDesembolso,
+  } = paramCredito;
   const SEGURO_DESGRAVAMEN = 0.070; // => porcentaje
   const credito = new Credito(paramPrestamo, paramPlazo, paramTea, SEGURO_DESGRAVAMEN);
   let saldoCapital = Number(credito.prestamo);
   const calendario = [];
+  // new Date() en javascript me resta un dia
+  const fechaDesembolso = new Date(paramFechaDesembolso);
+  fechaDesembolso.setMinutes(fechaDesembolso.getMinutes() + fechaDesembolso.getTimezoneOffset());
+  // fin new Date() en javascript me resta un dia:
   let rowCalendario = {
     nroCuota: 0,
+    fechaVencimiento: fechaDesembolso.toLocaleDateString(),
     capital: 0,
     interes: 0,
     cuota: 0,
@@ -68,8 +54,16 @@ const generarCronograma = (paramPrestamo, paramPlazo, paramTea) => {
 
       saldoCapital -= amortizacionCapitalMensual;
 
+      // Obtener fecha de vencimiento
+      const fechaVencimiento = new Date(paramFechaDesembolso);
+      const diaActual = fechaVencimiento.getDate();
+      const diaTranscurrido = diaActual + (30 * cuota);
+      fechaVencimiento.setDate(diaTranscurrido);
+      // fin Obtener fecha de vencimiento
+
       rowCalendario = {
         nroCuota: cuota,
+        fechaVencimiento: fechaVencimiento.toLocaleDateString(),
         capital: amortizacionCapitalMensual.toFixed(2),
         interes: interesCuota.toFixed(2),
         cuota: credito.calculoCuotaFijaMensual(),
@@ -98,8 +92,6 @@ const generarCronograma = (paramPrestamo, paramPlazo, paramTea) => {
 
   listCalendarios.push(newSingleCalendario);
   localStorage.setItem('listCalendario', JSON.stringify(listCalendarios));
-
-  cargarHistorialCronogramas(listCalendarios);
 };
 
 function validarInput(paramInput, index) {
@@ -123,6 +115,9 @@ function calcularCronograma(event) {
   const inputPrestamo = document.querySelector('#prestamo');
   const inputPlazo = document.querySelector('#plazo');
   const inputTea = document.querySelector('#tea');
+  // const inputMoneda = document.querySelector('#moneda');
+  const inputFechaDesembolso = document.querySelector('#fechaDesembolso');
+
   let validar = true;
 
   if (validarInput(inputPrestamo, 0) === false) {
@@ -141,16 +136,21 @@ function calcularCronograma(event) {
     return;
   }
 
-  generarCronograma(inputPrestamo.value, inputPlazo.value, inputTea.value);
+  const credito = {
+    prestamo: inputPrestamo.value,
+    plazo: inputPlazo.value,
+    tea: inputTea.value,
+    fechaDesembolso: inputFechaDesembolso.value,
+  };
+
+  generarCronograma(credito);
 
   inputPrestamo.value = '';
   inputPlazo.value = '';
   inputTea.value = '';
+  inputFechaDesembolso.value = '';
 }
 
-form.addEventListener('submit', calcularCronograma);
-
 window.addEventListener('load', () => {
-  const storageListCalendario = localStorage.getItem('listCalendario');
-  cargarHistorialCronogramas(JSON.parse(storageListCalendario));
+  form.addEventListener('submit', calcularCronograma);
 });

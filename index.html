@@ -29,17 +29,17 @@
       <div class="menu-main">
         <ul class="menu">
           <li class="menu-item">
-            <a href="#" class="menu-link">Generar Cronograma</a>
+            <a href="./index.html" class="menu-link">Generar Cronograma</a>
           </li>
           <li class="menu-item">
-            <a href="#" class="menu-link">Mis cronogramas</a>
+            <a href="./public/cronogramas.html" class="menu-link">Mis cronogramas</a>
           </li>
-          <li class="menu-item">
+          <!-- <li class="menu-item">
             <a href="#" class="menu-link">Ejemplos</a>
           </li>
           <li class="menu-item">
             <a href="#" class="menu-link">Conceptos de créditos</a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </nav>
@@ -47,7 +47,7 @@
     <main class="main">
       <section class="main-content">
         <div class="descripcion">
-          <h2>Calendario de Pagos- </h2>
+          <h2>Calendario de Pagos</h2>
           <p>
             Una persona acude a una entidad Bancaria en busca de un préstamo de consumo, por un monto
             de S/ 6,000.00 a un plazo de 12 meses. De acuerdo al tarifario le corresponde una tasa
@@ -56,50 +56,53 @@
         </div>
         <div class="form-content">
           <form class="formulario" action="" autocomplete="off">
-            <div class="campo">
-              <label for="prestamo">Prestamo:</label>
-              <input type="text" id="prestamo">
-              <span class="mensaje none">* Debe ingresar el prestamo</span>
-            </div>
-            <div class="campo">
-              <label for="plazo">Plazo:</label>
-              <input type="text" id="plazo">
-              <span class="mensaje none">* Debe ingresar el plazo</span>
-            </div>
-            <div class="campo">
-              <label for="tea">TEA:</label>
-              <input type="text" id="tea">
-              <span class="mensaje none">* Debe ingresar la TEA</span>
+            <div class="content-campos">
+              <div class="campo">
+                <label for="prestamo">Prestamo:</label>
+                <input type="text" id="prestamo">
+                <span class="mensaje none">* Debe ingresar el prestamo</span>
+              </div>
+              <div class="campo">
+                <label for="plazo">Plazo:</label>
+                <input type="text" id="plazo">
+                <span class="mensaje none">* Debe ingresar el plazo</span>
+              </div>
+              <div class="campo">
+                <label for="tea">TEA:</label>
+                <input type="text" id="tea">
+                <span class="mensaje none">* Debe ingresar la TEA</span>
+              </div>
+              <div class="campo">
+                <label for="moneda">Moneda:</label>
+                <select name="moneda" id="moneda" class="campo-select">
+                  <option value="soles">Soles</option>
+                  <option value="dolares">Dólares</option>
+                </select>
+                <span class="mensaje none">* Debe ingresar el prestamo</span>
+              </div>
+              <div class="campo">
+                <label for="seguro">Seg. desgravamen:</label>
+                <input type="text" id="seguro">
+                <span class="mensaje none">* Debe ingresar el plazo</span>
+              </div>
+              <div class="campo">
+                <label for="fechaDesembolso">Fecha de desembolso:</label>
+                <input type="date" id="fechaDesembolso">
+                <span class="mensaje none">* Debe ingresar la TEA</span>
+              </div>
             </div>
             <div class="button-content">
               <input class="btn" type="submit" value="Calcular">
             </div>
           </form>
         </div>
-        <div class="historial">
-          <h3>Historial de cronogramas</h3>
-          <table class="table-historial">
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>Prestamo</th>
-                <th>Plazo</th>
-                <th>TEA</th>
-                <th>Ver</th>
-              </tr>
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
-        </div>
-        <br>
-        <br>
         <div class="cronograma">
           <h3>Cronograma de pagos</h3>
           <table class="table-cronograma">
             <thead>
               <tr>
                 <th>Nº de cuotas</th>
+                <th>Fecha de Vcto.</th>
                 <th>Capital</th>
                 <th>Interes</th>
                 <th>Cuota</th>
